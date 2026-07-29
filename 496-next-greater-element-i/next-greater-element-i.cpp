@@ -21,13 +21,15 @@ public:
         vector<int> next = nextgreater(nums2);
         vector<int> ans;
 
-        for(int i = 0; i < nums1.size() ; i++){
-            for(int j = 0; j < nums2.size() ; j++){
-                if(nums1[i] == nums2[j]){
-                    ans.push_back(next[j]);
-                }
-            }
+        unordered_map<int, int> mp;
+
+        for (int i = 0; i < nums2.size(); i++) {
+            mp[nums2[i]] = next[i];
         }
+        for(int x : nums1){
+            ans.push_back(mp[x]);
+        }
+
         return ans;
         
     }
